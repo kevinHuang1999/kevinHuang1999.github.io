@@ -24,7 +24,7 @@ tags:								#标签
 
 这种通过中转点来更新两地之间的最短距离的操作我们称之为”松弛“。如图：  
 
-![](https://ws4.sinaimg.cn/large/006tNc79ly1g226iwpzxlj30ai075glq.jpg)  
+![](https://github-blog-kevinhuang-1304012368.cos.ap-shanghai.myqcloud.com/img/20201024222823.png)  
 
 i到j的距离为6，但是这时候有个中转点k，可以经过k，使得i到j的最短距离减少为5.这个操作就是松弛。  
 
@@ -37,7 +37,7 @@ for(int k = 0; k < n; k++)
 		if(d[v[i]] != INF && d[v[i]] > d[u[i]] + w[i])
 			d[v[i]] = d[u[i]] + w[i];	//松弛
 	}
-``` 
+```
 
 我们为何使用n-1次循环对每条边进行松弛？因为每次循环，我们都可以确定一个点的最短路。当我们第n次循环也进行松弛操作，说明我们的图存在负环！因为我们最短路最多通过n-1条边。  
 
@@ -46,6 +46,35 @@ O(nm) 的时间，大多数都浪费了。
 
 所以有个优化的算法叫SPFA，下次再来谈这个算法😁 
 
+完整代码
 
-	  
+```
+
+#include<iostream>
+using namespace std;
+const int INF = 99999999;
+using namespace std;
+int main()
+{
+    int u[100] , v[100] , w[100] , dis[100] , n , m ;
+    cin>>n>>m;
+    for(int i = 0 ; i < m ; i ++)
+    {
+        cin>>u[i] >> v[i] >> w[i];
+    }
+    for(int i = 0 ; i  < n ; i ++)
+    		dis[i] = INF;
+    dis[0] = 0; //编号0~n-1
+    for(int k = 0 ; k < n ; k ++)
+        for(int i = 0 ; i < m ; i ++)
+            if(dis[v[i]] > dis[u[i]] + w[i])
+                dis[v[i]] = dis[u[i]] + w[i];
+               
+            for(int i = 0 ; i < n ; i ++)
+                cout<<dis[i]<<" ";
+    return 0 ;
+}
+```
+
+
 

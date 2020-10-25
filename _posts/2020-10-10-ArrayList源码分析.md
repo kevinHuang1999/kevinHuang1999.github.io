@@ -1,4 +1,5 @@
 ---
+
 layout:     post   				    # 使用的布局（不需要改）
 title:      ArrayList源码分析 				# 标题 
 subtitle:   java-jdk-ArrayList #副标题
@@ -247,3 +248,4 @@ private void fastRemove(int index) {
 }
 ```
 
+参考: [慕课专栏](https://www.imooc.com/read/47) 

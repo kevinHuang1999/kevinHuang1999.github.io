@@ -1,4 +1,5 @@
 ---
+
 layout:     post   				    # 使用的布局（不需要改）
 title:      LinkedList源码分析 				# 标题 
 subtitle:   java-jdk-LinkedList #副标题

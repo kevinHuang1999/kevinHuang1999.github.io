@@ -25,22 +25,22 @@ tags:								#标签
 
 ```java
 /**
- * A reentrant mutual exclusion {@link Lock} with the same basic
- * behavior and semantics as the implicit monitor lock accessed using
- * {@code synchronized} methods and statements, but with extended
- * capabilities.
- * 可重入互斥锁，和synchronized有相同的功能语义,但更具有拓展性
+/ * A reentrant mutual exclusion {@link Lock} with the same basic
+/ * behavior and semantics as the implicit monitor lock accessed using
+/ * {@code synchronized} methods and statements, but with extended
+/ * capabilities.
+/ * 可重入互斥锁，和synchronized有相同的功能语义,但更具有拓展性
  **/
 ```
 
 ----------------------
 
 ```java
-/*
-* <p>The constructor for this class accepts an optional
-* <em>fairness</em> parameter.
-* .....
-* 构造器可以接受fairness参数，true为公平锁,false为不公平锁
+/**
+/* <p>The constructor for this class accepts an optional
+/* <em>fairness</em> parameter.
+/* .....
+/* 构造器可以接受fairness参数，true为公平锁,false为不公平锁
 */
 ```
 
@@ -48,12 +48,13 @@ tags:								#标签
 
 ```java
 /*
-* Programs using fair locks accessed by many threads
-* may display lower overall throughput (i.e., are slower; often much
-* slower) than those using the default setting, but have smaller
-* variances in times to obtain locks and guarantee lack of
-* starvation.
-* 公平锁比默认的锁(非公平)的吞吐量低，但是在获得锁的时间上有较小的差异，并保证不会产* 生饥饿 
+/* Programs using fair locks accessed by many threads
+/* may display lower overall throughput (i.e., are slower; often much
+/* slower) than those using the default setting, but have smaller
+/* variances in times to obtain locks and guarantee lack of
+/* starvation.
+/* 公平锁比默认的锁(非公平)的吞吐量低，但是在获得锁的时间上有较小的差异，并保证不会
+/产 生饥饿 
 */
 ```
 
@@ -61,10 +62,10 @@ tags:								#标签
 
 ```java
 /*
-* Also note that the untimed {@link #tryLock()} method does not
-* honor the fairness setting. It will succeed if the lock
-* is available even if other threads are waiting.
-* tryLock()无参方法没有遵循公平性，
+/* Also note that the untimed {@link #tryLock()} method does not
+/* honor the fairness setting. It will succeed if the lock
+/* is available even if other threads are waiting.
+/* tryLock()无参方法没有遵循公平性，
 */
 ```
 
@@ -141,13 +142,13 @@ AQS的全称是AbstractQueuedSynchronizer，译名抽象队列同步器。可以
 
 ```java
 /*
-* <p>To enqueue into a CLH lock, you atomically splice it in as new
-* tail. To dequeue, you just set the head field.
-* <pre>
-*      +------+  prev +-----+       +-----+
-* head |      | <---- |     | <---- |     |  tail
-*      +------+       +-----+       +-----+
-* </pre>
+/* <p>To enqueue into a CLH lock, you atomically splice it in as new
+/* tail. To dequeue, you just set the head field.
+/* <pre>
+/*      +------+  prev +-----+       +-----+
+/* head |      | <---- |     | <---- |     |  tail
+/*      +------+       +-----+       +-----+
+/* </pre>
 */
 ```
 

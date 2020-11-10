@@ -33,8 +33,8 @@ tags:								#标签
 
 - 允许 put null 值，会自动扩容；
 
-  ```
-  <p>Each <tt>ArrayList</tt> instance has a <i>capacity</i>.  The capacity is the size of the array used to store the elements in the list.  It is always at least as large as the list size.  As elements are added to an ArrayList, its capacity grows automatically. 
+  ```java
+  //<p>Each <tt>ArrayList</tt> instance has a <i>capacity</i>.  The //capacity is the size of the array used to store the elements in //the list.  It is always at least as large as the list size.  As //elements are added to an ArrayList, its capacity grows //automatically. 
   ```
 
 - size、isEmpty、get、set、add 等方法时间复杂度都是 O (1)；
@@ -43,16 +43,19 @@ tags:								#标签
 
 - 是非线程安全的，多线程情况下，推荐使用线程安全类：Collections#synchronizedList；
 
+  ```java
+  //<p><strong>Note that this implementation is not synchronized.
+  //</strong> If multiple threads access an <tt>ArrayList</tt> 
+//instance concurrently, and at least one of the threads modifies 
+  //the list structurally, it <i>must</i> be synchronized externally.
   ```
-  * <p><strong>Note that this implementation is not synchronized.</strong> If multiple threads access an <tt>ArrayList</tt> instance concurrently, and at least one of the threads modifies the list structurally, it <i>must</i> be synchronized externally.
-  ```
-
-  ```
-  If no such object exists, the list should be "wrapped" using the
-  {@link Collections#synchronizedList Collections.synchronizedList}
-  method.  This is best done at creation time, to prevent accidental unsynchronized access to the list
-  <pre>
-  List list = Collections.synchronizedList(new ArrayList(...));</pre>
+  
+  ```java
+  //If no such object exists, the list should be "wrapped" using the
+  //{@link Collections#synchronizedList Collections.synchronizedList}
+  //method.  This is best done at creation time, to prevent //accidental unsynchronized access to the list
+  //<pre>
+  //List list = Collections.synchronizedList(new ArrayList(...));</pre>
   ```
 
 ​		
@@ -104,12 +107,12 @@ ArrayList 无参构造器初始化时，默认大小是空数组，并不是大�
 - 直接赋值
 
 ```java
-/**
-     * Appends the specified element to the end of this list.
-     *
-     * @param e element to be appended to this list
-     * @return <tt>true</tt> (as specified by {@link Collection#add})
-     */
+//
+     //Appends the specified element to the end of this list.
+     //
+     //@param e element to be appended to this list
+     //@return <tt>true</tt> (as specified by {@link Collection#add})
+     //
     public boolean add(E e) {
         //判断是否需要扩容
         ensureCapacityInternal(size + 1);  // Increments modCount!!
